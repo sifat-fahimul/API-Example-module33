@@ -36,12 +36,13 @@ const displaySearchResult = meals => {
 const loadMealDetail = async meal => {
     const url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${meal}`;
 
-    const res = fetch(url)
-    const data = (await res).json()
+    const res = await fetch(url)
+    const data = await res.json()
+    displayDetailsMeal(data.meals[0])
 
-    fetch(url)
-        .then(res => res.json())
-        .then(data => displayDetailsMeal(data.meals[0]))
+    // fetch(url)
+    //     .then(res => res.json())
+    //     .then(data => displayDetailsMeal(data.meals[0]))
 }
 const displayDetailsMeal = mealDetails => {
     console.log(mealDetails)
